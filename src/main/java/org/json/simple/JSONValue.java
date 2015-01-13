@@ -112,10 +112,10 @@ public class JSONValue {
      * "this" as the first parameter, use JSONObject.writeJSONString(Map, Writer) or JSONArray.writeJSONString(List, Writer) instead. 
      * 
      * @see org.json.simple.JSONObject#writeJSONString(Map, Writer)
-     * @see org.json.simple.JSONArray#writeJSONString(List, Writer)
+     * @see org.json.simple.JSONArray
      * 
      * @param value
-     * @param writer
+     * @param out
      */
 	public static void writeJSONString(Object value, Writer out) throws IOException {
 		if(value == null){

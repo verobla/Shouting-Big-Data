@@ -13,7 +13,6 @@ hadoop jar bigdata-0.2.jar nl.utwente.bigdata.shouting.NonShoutingExtractor worl
 hadoop jar bigdata-0.2.jar nl.utwente.bigdata.shouting.Sorter shoutingWords/* shoutingWordsSorted
 hadoop jar bigdata-0.2.jar nl.utwente.bigdata.shouting.WordCounter shoutingWords/* nonShoutingWords/* wordCounts
 
-: '
 cd $HOME/Documents/Lectures/BigData/Shouting-Big-Data/mapreduceResults
 
 hadoop fs -cat pigTable/* > resultPigTable
@@ -21,4 +20,3 @@ hadoop fs -cat shoutingWords/* > resultShoutingWords
 hadoop fs -cat shoutingWordsSorted/* > resultShoutingWordsSorted
 hadoop fs -cat nonShoutingWords/* > nonShouting
 hadoop fs -cat wordCounts/* > wordCounts
-'

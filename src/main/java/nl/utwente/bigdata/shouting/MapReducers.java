@@ -30,7 +30,6 @@ public class MapReducers {
         private String device;
         private JSONParser parser = new JSONParser();
         private Map tweet;
-        //private CustomFileWriter fileWriter = new CustomFileWriter( "test");
 
         public void map(Object key, Text value, Context context
         ) throws IOException, InterruptedException {
@@ -60,7 +59,7 @@ public class MapReducers {
 
         private String stripSourceName(String device) {
             try {
-                return device.substring(device.indexOf('>') + 1, device.lastIndexOf('<'));
+                return device.substring(device.indexOf('>') + 1, device.lastIndexOf('<')).replace( "\\s" , " ");
             } catch (Exception e) {
                 return "Exceptional Device";
             }

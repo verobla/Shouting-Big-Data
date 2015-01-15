@@ -80,7 +80,7 @@ public class JSONParser {
             return parse(in, containerFactory);
         } catch (IOException ie) {
             /*
-			 * Actually it will never happen.
+             * Actually it will never happen.
 			 */
             throw new ParseException(-1, ParseException.ERROR_UNEXPECTED_EXCEPTION, ie);
         }

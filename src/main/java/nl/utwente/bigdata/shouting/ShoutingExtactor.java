@@ -36,7 +36,8 @@ public class ShoutingExtactor {
         }
         Job job = new Job(conf, "Extract Shouting Words");
         job.setJarByClass(ShoutingExtactor.class);
-        job.setMapperClass( MapReducers.ShoutingMapper.class);
+        job.setMapperClass(MapReducers.ShoutingWordsMapper.class);
+        job.setCombinerClass(MapReducers.CounterReducer.class);
         job.setReducerClass( MapReducers.CounterReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);

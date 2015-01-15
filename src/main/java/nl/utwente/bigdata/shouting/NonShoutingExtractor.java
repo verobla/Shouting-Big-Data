@@ -34,10 +34,11 @@ public class NonShoutingExtractor {
             System.err.println("Usage: exampleTwitter <in> [<in>...] <out>");
             System.exit(2);
         }
-        Job job = new Job(conf, "Extract Shouting Words");
+        Job job = new Job(conf, "Extract NonShouting Words");
         job.setJarByClass(ShoutingExtactor.class);
-        job.setMapperClass( MapReducers.NonShoutingMapper.class);
-        job.setReducerClass( MapReducers.CounterReducer.class);
+        job.setMapperClass(MapReducers.NonShoutingWordsMapper.class);
+        job.setReducerClass(MapReducers.CounterReducer.class);
+        job.setReducerClass(MapReducers.CounterReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
         for (int i = 0; i < otherArgs.length - 1; ++i) {
@@ -48,26 +49,4 @@ public class NonShoutingExtractor {
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 
-    public static boolean isUppercaseShouting(String str) {
-        String[] words = str.split( " ");
-        for (String word : words) {
-            if( !isExceptional( word) && word.length() >= ShoutingConstants.MINIMUM_LENGTH  ){
-                return word.matches( "[\\p{Lu}]+");
-            }
-        }
-        return false;
-    }
-
-    public static boolean isShouting(String text){
-        return isUppercaseShouting(text) || text.contains( "!") || text.contains(":@");
-    }
-
-    public static boolean isExceptional(String word) {
-        for (String exceptionWord : ShoutingConstants.exceptionWords) {
-            if( word.equals(exceptionWord)){
-                return true;
-            }
-        }
-        return false;
-    }
 }

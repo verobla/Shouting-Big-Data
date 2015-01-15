@@ -10,8 +10,10 @@ import org.apache.hadoop.util.GenericOptionsParser;
 
 /**
  * Created by saygindogu on 1/13/15.
+ *
+ * Expects input in the output format of ShoutingExtactor and NonShoutingExtactor
  */
-public class ShoutingCounter {
+public class WordCounter {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
         String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
@@ -21,7 +23,7 @@ public class ShoutingCounter {
         }
         Job job = new Job(conf, "Count All Words");
         job.setJarByClass(ShoutingExtactor.class);
-        job.setMapperClass( MapReducers.ShoutingCountMapper.class);
+        job.setMapperClass(MapReducers.DistinctShoutingCountMapper.class);
         job.setReducerClass( MapReducers.CounterReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);

@@ -13,14 +13,21 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * This class contains all map and reduce classes
  * Created by saygindogu on 1/13/15.
  */
 public class MapReducers {
     public static int INFINITY = 999999999;
 
+    /**
+     * Mapper to generate the PigTable of shouts
+     * @author Roland
+     *
+     */
     public static class PigTableMapper
             extends Mapper<Object, Text, Text, Text> {
 
+    	// Data to gather from shout
         private Text idString = new Text();
         private Text contents = new Text();
         private String tweetText;
@@ -28,9 +35,12 @@ public class MapReducers {
         private String date;
         private String tweetLanguage;
         private String device;
+        
+        // JSON parser and actual tweet
         private JSONParser parser = new JSONParser();
         private Map tweet;
 
+        // Mapping process
         public void map(Object key, Text value, Context context
         ) throws IOException, InterruptedException {
 
@@ -40,23 +50,25 @@ public class MapReducers {
                 return; // do nothing (we might log this)
             }
 
+            // Grab data from tweet
             idString.set((String) tweet.get("id_str"));
             tweetText = ((String) tweet.get("text")).replaceAll("\n", " ").replaceAll("\t", " ");
             date = (String) tweet.get("created_at");
             tweetLanguage = (String) tweet.get("lang");
             device = (String) tweet.get("source");
 
+            // If the tweet is identified as a shout, write the tweet to the reducer
             if (ShoutingExtactor.isShouting(tweetText)) {
                 isShoutingText = "true";
-            } else {
-                isShoutingText = "false";
+                device = stripSourceName(device);
+                contents.set(tweetLanguage + "\t" + date + "\t" + device + "\t" + tweetText);
+                context.write(idString, contents);
             }
-            device = stripSourceName(device);
-
-            contents.set(tweetLanguage + "\t" + date + "\t" + device + "\t" + tweetText + "\t" + isShoutingText);
-            context.write(idString, contents);
         }
 
+        /**
+         * Method to strip the device name out of the full string with HTML data
+         */
         private String stripSourceName(String device) {
             try {
                 return device.substring(device.indexOf('>') + 1, device.lastIndexOf('<')).replace( "\\s" , " ");
@@ -66,6 +78,11 @@ public class MapReducers {
         }
     }
 
+    /**
+     * Reducer which has not an actual job except writing the shouted tweets down
+     * @author Roland
+     *
+     */
     public static class PigTableReducer
             extends Reducer<Text, Text, Text, Text> {
 
@@ -78,6 +95,13 @@ public class MapReducers {
         }
     }
 
+    /**
+     * This MapReduce job is built to count the most shouted words
+     * 
+     * The mapper here collects the shouted words from a tweet and adds a 1 counter to it
+     * @author Roland
+     *
+     */
     public static class ShoutingWordsMapper
             extends Mapper<Object, Text, Text, Text> {
 
@@ -108,6 +132,11 @@ public class MapReducers {
         }
     }
 
+    /**
+     * This mapper is meant to count all non shouting words
+     * @author Roland
+     *
+     */
     public static class NonShoutingWordsMapper
             extends Mapper<Object, Text, Text, Text> {
 
@@ -139,6 +168,11 @@ public class MapReducers {
         }
     }
 
+    /**
+     * This reducer allows counting the most shouted words
+     * @author Roland
+     *
+     */
     public static class CounterReducer
             extends Reducer<Text, Text, Text, Text> {
 

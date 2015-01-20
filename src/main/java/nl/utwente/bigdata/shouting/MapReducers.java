@@ -190,6 +190,13 @@ public class MapReducers {
     }
 
 
+    /**
+     * The goal of this mapper is to sort data by value
+     * The sorter mapper splits the read data by spaces and splits it up in the following parts
+     * "count","data"
+     * @author Roland
+     *
+     */
     public static class SorterMapper
             extends Mapper<Object, Text, Text, Text> {
 
@@ -201,6 +208,11 @@ public class MapReducers {
         }
     }
 
+    /**
+     * The SorterReducer writes the sorted values
+     * @author Roland
+     *
+     */
     public static class SorterReducer
             extends Reducer<Text, Text, Text, Text> {
 
@@ -213,6 +225,12 @@ public class MapReducers {
         }
     }
 
+    /**
+     * The partitioner makes sure the data arrives in chunks or so called "partitions"
+     * to ensure the data arrives more or less in an order
+     * @author Roland
+     *
+     */
     public static class SorterPartitioner
             extends Partitioner<Text, Text> {
 
@@ -233,7 +251,11 @@ public class MapReducers {
         }
     }
 
-
+    /**
+     * 
+     * @author Roland
+     *
+     */
     public static class DistinctShoutingCountMapper extends Mapper<Object, Text, Text, Text> {
         private String text;
 

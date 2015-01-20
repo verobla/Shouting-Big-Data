@@ -1,7 +1,7 @@
-package nl.utwente.bigdata.shouting;
+package nl.utwente.bigdata.shouting.util;
 
 /**
- * Created by Saygin on 11.1.2015.
+ * Created by BigDataShoutingGroup on 11.1.2015.
  */
 public class Testclass {
     public static void main(String[] args) {

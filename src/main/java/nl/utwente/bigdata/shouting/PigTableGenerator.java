@@ -17,6 +17,7 @@
  */
 package nl.utwente.bigdata.shouting;
 
+import nl.utwente.bigdata.shouting.util.MapReducers;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -26,6 +27,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
 /**
+ * This program generates a table to be used as an input for pig latin
  * Expects Json tweet input...
  */
 public class PigTableGenerator {

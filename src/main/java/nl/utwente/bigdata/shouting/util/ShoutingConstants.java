@@ -1,7 +1,7 @@
-package nl.utwente.bigdata.shouting;
+package nl.utwente.bigdata.shouting.util;
 
 /**
- * Created by saygindogu on 1/13/15.
+ * Created by BigDataShoutingGroup on 1/13/15.
  */
 public interface ShoutingConstants {
     public static final int MINIMUM_LENGTH = 2;

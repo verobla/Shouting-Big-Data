@@ -1,5 +1,6 @@
-package nl.utwente.bigdata.shouting;
+package nl.utwente.bigdata.shouting.util;
 
+import nl.utwente.bigdata.shouting.ShoutingExtactor;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Partitioner;
@@ -13,15 +14,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This class contains all map and reduce classes
- * Created by saygindogu on 1/13/15.
+ * This class contains all map and reduce classes.
+ * Created by BigDataShoutingGroup on 1/13/15.
  */
 public class MapReducers {
     public static int INFINITY = 999999999;
 
     /**
      * Mapper to generate the PigTable of shouts
-     * @author Roland
+     * @author BigDataShoutingGroup
      *
      */
     public static class PigTableMapper
@@ -80,7 +81,7 @@ public class MapReducers {
 
     /**
      * Reducer which has not an actual job except writing the shouted tweets down
-     * @author Roland
+     * @author BigDataShoutingGroup
      *
      */
     public static class PigTableReducer
@@ -99,7 +100,7 @@ public class MapReducers {
      * This MapReduce job is built to count the most shouted words
      * 
      * The mapper here collects the shouted words from a tweet and adds a 1 counter to it
-     * @author Roland
+     * @author BigDataShoutingGroup
      *
      */
     public static class ShoutingWordsMapper
@@ -134,7 +135,7 @@ public class MapReducers {
 
     /**
      * This mapper is meant to count all non shouting words
-     * @author Roland
+     * @author BigDataShoutingGroup
      *
      */
     public static class NonShoutingWordsMapper
@@ -170,7 +171,7 @@ public class MapReducers {
 
     /**
      * This reducer allows counting the most shouted words
-     * @author Roland
+     * @author BigDataShoutingGroup
      *
      */
     public static class CounterReducer
@@ -194,7 +195,7 @@ public class MapReducers {
      * The goal of this mapper is to sort data by value
      * The sorter mapper splits the read data by spaces and splits it up in the following parts
      * "count","data"
-     * @author Roland
+     * @author BigDataShoutingGroup
      *
      */
     public static class SorterMapper
@@ -210,7 +211,7 @@ public class MapReducers {
 
     /**
      * The SorterReducer writes the sorted values
-     * @author Roland
+     * @author BigDataShoutingGroup
      *
      */
     public static class SorterReducer
@@ -226,9 +227,9 @@ public class MapReducers {
     }
 
     /**
-     * The partitioner makes sure the data arrives in chunks or so called "partitions"
+     * The petitioner makes sure the data arrives in chunks or so called "partitions"
      * to ensure the data arrives more or less in an order
-     * @author Roland
+     * @author BigDataShoutingGroup
      *
      */
     public static class SorterPartitioner
@@ -252,8 +253,8 @@ public class MapReducers {
     }
 
     /**
-     * 
-     * @author Roland
+     * This mapper is used to count all the words and it splits the words to the categories of shouting and non shouting
+     * @author BigDataShoutingGroup
      *
      */
     public static class DistinctShoutingCountMapper extends Mapper<Object, Text, Text, Text> {

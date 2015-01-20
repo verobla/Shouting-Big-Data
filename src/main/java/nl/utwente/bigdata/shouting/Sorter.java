@@ -17,24 +17,22 @@
  */
 package nl.utwente.bigdata.shouting;
 
-import java.io.*;
-import java.util.Map;
-import java.util.logging.Logger;
 
+import nl.utwente.bigdata.shouting.util.MapReducers;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.Partitioner;
-import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
-import org.json.simple.parser.JSONParser;
 
-
+/**
+ * This program sorts a table with key value pairs in terms of the value's numerical values.
+ * Note that the sorting will work only for the numbers having maximum 8 digits in decimal representation.
+ * The changes should be made for the mapper if expected values are higher.
+ */
 public class Sorter {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();

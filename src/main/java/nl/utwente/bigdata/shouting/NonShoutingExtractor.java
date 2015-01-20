@@ -17,6 +17,7 @@
  */
 package nl.utwente.bigdata.shouting;
 
+import nl.utwente.bigdata.shouting.util.MapReducers;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -25,7 +26,9 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
-
+/**
+ *  This program extracts the non shouting words from json tweet data and counts them.
+ */
 public class NonShoutingExtractor {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();

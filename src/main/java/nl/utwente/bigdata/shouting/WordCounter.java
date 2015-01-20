@@ -1,5 +1,6 @@
 package nl.utwente.bigdata.shouting;
 
+import nl.utwente.bigdata.shouting.util.MapReducers;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -9,9 +10,9 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
 /**
- * Created by saygindogu on 1/13/15.
+ * Created by BigDataShoutingGroup on 1/13/15.
  *
- * Expects input in the output format of ShoutingExtactor and NonShoutingExtactor
+ * Expects input in the output format of ShoutingExtactor and NonShoutingExtactos
  */
 public class WordCounter {
     public static void main(String[] args) throws Exception {

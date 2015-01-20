@@ -17,6 +17,8 @@
  */
 package nl.utwente.bigdata.shouting;
 
+import nl.utwente.bigdata.shouting.util.MapReducers;
+import nl.utwente.bigdata.shouting.util.ShoutingConstants;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -26,6 +28,10 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
 
+/**
+ * This program extracts the shouting words from json tweet data and counts them.
+ * The output is unsorted.
+ */
 public class ShoutingExtactor {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();

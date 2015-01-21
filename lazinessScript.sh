@@ -1,3 +1,4 @@
+#!/bin/sh
 mvn package
 cd $HOME/Documents/Lectures/BigData/Shouting-Big-Data/target
 

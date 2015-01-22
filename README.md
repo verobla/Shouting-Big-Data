@@ -19,7 +19,7 @@ Our project consists of 2 main parts:
 1) MapReduce part
 2) Pig Latin part
 
-###1) Running Mapreduce Part
+###1) Running MapReduce Part
 
 - You need to download the whole project and build it with `mvn package `command or you can donwload the jar file. *(note that jar file might not be the latest build)*
 - After putting jar file to the cluster, you can run FullLauncher.sh or give the following commands with desired input files and output directories:

@@ -13,17 +13,17 @@ Our project consists of 2 main parts:
 
 	hadoop jar bigdata-0.2.jar nl.utwente.bigdata.shouting.PigTableGenerator /user/alyr/worldcup/* FullPigTable
 
- Different MapReduce tasks are put in different classes which have main methods for clarity and simplicity.
+Different MapReduce tasks are put in different classes which have main methods for clarity and simplicity.
 
- Available programs inside the jar are:
+Available programs inside the jar are:
 
  - PigTableGenerator:		to generate the table that are used by Pig Latin
  - ShoutingExtractor:		to extract the shouting tweets
  - NonShoutingExtractor:	to extract the non shouting tweets
  - Sorter:					to sort the tweets
- - WordCounter:			to count the words in a tweet
+ - WordCounter:				to count the words in a tweet
 
- they are all in package "nl.utwente.bigdata.shouting". For more information about the programs check the comments.
+They are all in package "nl.utwente.bigdata.shouting". For more information about the programs check the comments.
 
 2) Pig Latin part
 -You first need to make sure you have the FullPigTable or the PigTable (depending if you want to test on the whole data or just a small part) on the hadoop file system. For this, run the command:
@@ -31,7 +31,7 @@ Our project consists of 2 main parts:
 	hadoop fs -ls 
 	(add the folder name if it's not in the main folder)
 	
-and see if the file is there.
+And see if the file is there.
 
 Then run the following:	
 

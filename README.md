@@ -1,4 +1,5 @@
 # Shouting-Big-Data
+-------------------
 Our project for the Big Data Assignment Course.
 Like most of the sport events, football also triggers people to produce and share their ideas on social media, like Facebook, WhatsApp or Twitter. These reactions to events could have an emotional load, in other words the entries of the users may express happiness or frustration. The most extreme way of expressing emotions is shouting, especially in the sport events. One can imagine that large sport events, such as FIFA World Cup or Olympic games, can trigger various kinds of emotional data waiting to be mined. The twitter data give a lot of information such as language, devices used etc. and that helps for analysis. 
 Analyzing the emotions of people expressed on Twitter by shouting can be useful for psychological studies and it can provide interesting results for companies.
@@ -12,7 +13,7 @@ The specified analytical goals are:
 4. Analysis of devices used to shout with
 5. Analysis of the time of shouting
 
-# RUNNING THE PROGRAM
+## RUNNING THE PROGRAM
 
 Our project consists of 2 main parts:
 1) MapReduce part

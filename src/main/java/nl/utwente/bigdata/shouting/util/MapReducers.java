@@ -95,7 +95,8 @@ public class MapReducers {
             }
         }
     }
-
+    
+    
     /**
      * This MapReduce job is built to count the most shouted words
      * 
@@ -315,5 +316,77 @@ public class MapReducers {
                 shoutingWords.add(word);
         }
         return shoutingWords;
+    }
+    
+    /**
+     * Mapper to generate the PigTable of shouts
+     * @author BigDataShoutingGroup
+     *
+     */
+    public static class FullPigTableMapper
+            extends Mapper<Object, Text, Text, Text> {
+
+    	// Data to gather from shout
+        private Text idString = new Text();
+        private Text contents = new Text();
+        private String tweetText;
+        private String isShoutingText;
+        private String date;
+        private String tweetLanguage;
+        private String device;
+        
+        // JSON parser and actual tweet
+        private JSONParser parser = new JSONParser();
+        private Map tweet;
+
+        // Mapping process
+        public void map(Object key, Text value, Context context
+        ) throws IOException, InterruptedException {
+
+            try {
+                tweet = (Map<String, Object>) parser.parse(value.toString());
+            } catch (ClassCastException | org.json.simple.parser.ParseException e) {
+                return; // do nothing (we might log this)
+            }
+
+            // Grab data from tweet
+            idString.set((String) tweet.get("id_str"));
+            tweetText = ((String) tweet.get("text")).replaceAll("\n", " ").replaceAll("\t", " ");
+            date = (String) tweet.get("created_at");
+            tweetLanguage = (String) tweet.get("lang");
+            device = (String) tweet.get("source");
+
+            device = stripSourceName(device);
+            contents.set(tweetLanguage + "\t" + date + "\t" + device + "\t" + tweetText);
+            context.write(idString, contents);
+        }
+
+        /**
+         * Method to strip the device name out of the full string with HTML data
+         */
+        private String stripSourceName(String device) {
+            try {
+                return device.substring(device.indexOf('>') + 1, device.lastIndexOf('<')).replace( "\\s" , " ");
+            } catch (Exception e) {
+                return "Exceptional Device";
+            }
+        }
+    }
+
+    /**
+     * Reducer which has not an actual job except writing the shouted tweets down
+     * @author BigDataShoutingGroup
+     *
+     */
+    public static class FullPigTableReducer
+            extends Reducer<Text, Text, Text, Text> {
+
+        public void reduce(Text key, Iterable<Text> values,
+                           Context context
+        ) throws IOException, InterruptedException {
+            for (Text value : values) {
+                context.write(key, value);
+            }
+        }
     }
 }

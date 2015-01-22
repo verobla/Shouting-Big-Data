@@ -17,11 +17,11 @@ Our project consists of 2 main parts:
 
  Available programs inside the jar are:
 
- PigTableGenerator		to generate the table that are used by Pig Latin
- ShoutingExtractor		to extract the shouting tweets
- NonShoutingExtractor	to extract the non shouting tweets
- Sorter					to sort the tweets
- WordCounter			to count the words in a tweet
+ - PigTableGenerator:		to generate the table that are used by Pig Latin
+ - ShoutingExtractor:		to extract the shouting tweets
+ - NonShoutingExtractor:	to extract the non shouting tweets
+ - Sorter:					to sort the tweets
+ - WordCounter:			to count the words in a tweet
 
  they are all in package "nl.utwente.bigdata.shouting". For more information about the programs check the comments.
 

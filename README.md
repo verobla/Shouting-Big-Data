@@ -19,7 +19,7 @@ Our project consists of 2 main parts:
 1) MapReduce part
 2) Pig Latin part
 
-1) Running Mapreduce Part
+###1) Running Mapreduce Part
 
 - You need to download the whole project and build it with `mvn package `command or you can donwload the jar file. *(note that jar file might not be the latest build)*
 - After putting jar file to the cluster, you can run FullLauncher.sh or give the following commands with desired input files and output directories:
@@ -38,7 +38,7 @@ Available programs inside the jar are:
 
 They are all in package "nl.utwente.bigdata.shouting". For more information about the programs check the comments.
 
-2) Pig Latin part
+###2) Running Pig Latin part
 
 You first need to make sure you have the FullPigTable or the PigTable (depending if you want to test on the whole data or just a small part) on the hadoop file system. For this, run the command:
 

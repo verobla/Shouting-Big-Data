@@ -7,6 +7,7 @@ Analyzing the emotions of people expressed on Twitter by shouting can be useful 
 We use tweets from the 2014 World Cup.
 
 The specified analytical goals are:
+
 1. Extracting shouting tweets from the supplied data
 2. Finding most shouted words in Twitter
 3. Analysis of language of shouting

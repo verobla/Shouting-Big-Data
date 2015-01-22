@@ -26,10 +26,16 @@ Our project consists of 2 main parts:
  they are all in package "nl.utwente.bigdata.shouting". For more information about the programs check the comments.
 
 2) Pig Latin part
-You first need to make sure you have the FullPigTable or the PigTable (depending if you want to test on the whole data or just a small part) on the hadoop file system. For this, run the command:
+-You first need to make sure you have the FullPigTable or the PigTable (depending if you want to test on the whole data or just a small part) on the hadoop file system. For this, run the command:
+
 	hadoop fs -ls 
 	(add the folder name if it's not in the main folder)
+	
 and see if the file is there.
+
 Then run the following:	
+
 	pig time.pig		if you want to test on a small part of the data (PigTable)
+	
 	pig timeWhole.pig 	if you want to test on the whole table
+	

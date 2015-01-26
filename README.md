@@ -31,11 +31,13 @@ Different MapReduce tasks are put in different classes which have main methods f
 
 Available programs inside the jar are:
 
- - **PigTableGenerator:**		to generate the table that are used by Pig Latin
- - **ShoutingExtractor:**		to extract the shouting tweets
- - **NonShoutingExtractor:**	to extract the non shouting tweets
- - **Sorter:**			to sort the tweets
- - **WordCounter:**			to count the words in a tweet
+ - **FullPigTableGenerator**    - to generate the table with the full data set, to be used by Pig Latin scripts
+ - **PigTableGenerator:**    - to generate the table that only consist of shouting tweets, to be used by Pig Latin scripts
+ - **ShoutingExtractor:**    - to extract the shouting tweets
+ - **NonShoutingExtractor:**    - to extract the non shouting tweets
+ - **Sorter:**    - to sort the tweets
+ - **WordCounter:**    - to count the words in a tweet
+ 
 
 They are all in package "nl.utwente.bigdata.shouting". For more information about the programs check the comments.
 
@@ -46,7 +48,7 @@ You first need to make sure you have the FullPigTable or the PigTable (depending
 `hadoop fs -ls `
 (add the folder name if it's not in the main folder)
 	
-And see if the file is there.
+And see if the directory is there.
 
 Then run the following:
 

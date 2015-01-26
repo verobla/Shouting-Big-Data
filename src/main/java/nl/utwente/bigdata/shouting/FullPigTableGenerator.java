@@ -30,7 +30,7 @@ import org.apache.hadoop.util.GenericOptionsParser;
  * This program generates a table to be used as an input for pig latin
  * Expects Json tweet input...
  */
-public class PigTableGenerator {
+public class FullPigTableGenerator {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
         String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();

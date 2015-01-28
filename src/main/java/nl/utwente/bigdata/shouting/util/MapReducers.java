@@ -118,7 +118,7 @@ public class MapReducers {
             try {
                 tweet = (Map<String, Object>) parser.parse(value.toString());
             } catch (ClassCastException | org.json.simple.parser.ParseException e) {
-                return; // do nothing (we might log this)
+                return; // do nothing (we might logPigTableSmallDataset this)
             }
             text = ((String) tweet.get("text"));
             shoutedWords = grabShoutedWords(text);
@@ -153,7 +153,7 @@ public class MapReducers {
             try {
                 tweet = (Map<String, Object>) parser.parse(value.toString());
             } catch (ClassCastException | org.json.simple.parser.ParseException e) {
-                return; // do nothing (we might log this)
+                return; // do nothing (we might logPigTableSmallDataset this)
             }
             text = ((String) tweet.get("text"));
             nonShoutedWords = grabNonShoutedWords(text);
@@ -346,7 +346,7 @@ public class MapReducers {
             try {
                 tweet = (Map<String, Object>) parser.parse(value.toString());
             } catch (ClassCastException | org.json.simple.parser.ParseException e) {
-                return; // do nothing (we might log this)
+                return; // do nothing (we might logPigTableSmallDataset this)
             }
 
             // Grab data from tweet

@@ -87,7 +87,11 @@ The pig scripts can be found in the directory `src/main/pig`
 
 `pig time.pig`			if you want to test on a small part of the data (PigTable)
 	
-`pig timeWhole.pig `		if you want to test on the whole table of shouts
+`pig timeWhole.pig`		if you want to test on the whole table of shouts
+
+`pig timeWholeIncludedNonShouting.pig`		if you want to test on the whole table without filtered data
+
+`pig mean.pig`		calculate the average mean of total set of data
 
 ---------------
 	

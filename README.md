@@ -15,6 +15,10 @@ The specified analytical goals are:
 4. Analysis of devices used to shout with
 5. Analysis of the time of shouting
 
+---------------------------
+
+We got 7/10 from the report!
+
 --------------------------
 
 ## RUNNING THE PROGRAM
